@@ -4,9 +4,9 @@ import { NewsfeedRouter } from './routes/newsfeedRouter';
  
 function App() {
   return (
-    <main>
+    <React.Fragment>
       <NewsfeedRouter />
-    </main>
+    </React.Fragment>
 
   );
 }
