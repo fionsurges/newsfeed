@@ -1,7 +1,8 @@
 import React from 'react';
-import { Counter } from './features/counter/Counter';
+import logo from '../../logo.svg';
+import { Counter } from '../../features/counter/Counter';
 
-export const Other = () => {
+const Other = () => {
     return (
         <div className="App">
         <header className="App-header">
@@ -52,3 +53,5 @@ export const Other = () => {
     </div>
     )
 };
+
+export default Other;
