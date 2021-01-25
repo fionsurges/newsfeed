@@ -1,12 +1,10 @@
 import { React, Component } from 'react';
 import { get } from 'lodash';
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { styled } from 'styletron-react';
+
 import { getHeadlinesFromDataNewsApi } from '../../services/dataNewsService/dataNewsService';
+import ArticleCard from '../articles/ArticleCard';
+import Header from '../header/Header';
 
 
 class Home extends Component {
@@ -30,20 +28,37 @@ class Home extends Component {
     componentDidMount() {
         this.setHeadlinesToState()
     }
-    
+   
     render() {
         const headlinesList = this.state.headlines;
+        console.log(headlinesList);
 
-       
-      return (
-        <div>
-          <h1>Newsfeed</h1>
-          <h2>Top Headlines</h2>
-          {headlinesList.map((headline) => (
-            <h2>{headline.title}</h2>
-            ))}
-        </div>
-      );
+        const StyledComponent = styled('div', ({
+            display: 'flex',
+            height: '100vh',
+            justifyContent: 'flex-start',
+            flexWrap: 'wrap',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        }
+        ));
+    
+        return (
+            <div>
+                <Header />
+                <h2>Top Headlines</h2>
+                <StyledComponent>
+                    {headlinesList.map((headline) => (
+                    <ArticleCard 
+                        title={headline.title}
+                        content={headline.content}
+                        link={headline.url}
+                        imageUrl={headline.imageUrl}
+                    />
+                    ))}
+                </StyledComponent>
+             </div>
+        );
     }
   };
 
